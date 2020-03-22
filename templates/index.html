@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>Upload Your PDF File. We will calculate the CGPA for you for the semester</p>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <hr class="my-4">
+        {{ form.pdf_file(class="btn btn-primary") }}
+        <hr class="my-4">
+        {{  form.submit(class="btn btn-primary") }}
+    </form>
+{% endblock %}
