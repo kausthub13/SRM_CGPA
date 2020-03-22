@@ -13,7 +13,7 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mykey'
-app.config['UPLOAD_FOLDER'] = os.path.abspath(os.path.dirname(__file__)) + "\\uploads"
+app.config['UPLOAD_FOLDER'] = os.path.abspath(os.path.dirname(__file__)) + "/uploads"
 
 
 
