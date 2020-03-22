@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SRM CGPA Calculator</title>
     <link rel="stylesheet" href="../static/css/bootstrap.css">
     <script src="../static/js/jquery-3.4.1.min.js"></script>
     <script src="../static/js/bootstrap.bundle.js"></script>
+    <style>
+        .jumbotron{
+        height: 100vh;
+        }
+    </style>
 </head>
 <body>
-    <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4 text-center">Welcome to SRM CGPA Calculator</h1>
-      <hr class="my-4">
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4 text-center text-wrap">Welcome to SRM CGPA Calculator</h1>
+        <hr class="my-4">
+        {% block content %}
 
-      {% block content %}
+        {% endblock %}
 
-      {% endblock %}
-  </div>
+    </div>
 </div>
 
 </body>
