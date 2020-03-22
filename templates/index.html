@@ -5,8 +5,22 @@
     <form method="POST" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <hr class="my-4">
-        {{ form.pdf_file(class="btn btn-primary") }}
-        <hr class="my-4">
-        {{  form.submit(class="btn btn-primary") }}
+        <div class="input-group mb-3">
+            <div class="custom-file">
+                {{ form.pdf_file(class="custom-file-input ") }}
+                <label class="custom-file-label" for="pdf_file">Choose file</label>
+            </div>
+        </div>
+        {{ form.submit(class="btn btn-primary btn-lg btn-block") }}
     </form>
+    <script>
+            $('#pdf_file').on('change',function(){
+                //get the file name
+                var fileName = $(this).val();
+                var res = fileName.split("\\");
+
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(res[res.length-1]);
+            })
+        </script>
 {% endblock %}

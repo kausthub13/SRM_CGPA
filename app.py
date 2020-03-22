@@ -13,6 +13,8 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mykey'
+app.config['UPLOAD_FOLDER'] = os.path.abspath(os.path.dirname(__file__)) + "\\uploads"
+
 
 
 class FileUpload(FlaskForm):
@@ -25,8 +27,8 @@ def index():
     form = FileUpload()
     if form.validate_on_submit():
         filename = secure_filename(form.pdf_file.data.filename)
-        session['file'] = 'result.pdf'
-        form.pdf_file.data.save('result.pdf')
+        session['file'] = os.path.join(app.config['UPLOAD_FOLDER'],filename)
+        form.pdf_file.data.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
         return redirect(url_for('result'))
 
     return render_template('index.html', form=form)
@@ -113,6 +115,7 @@ def convert_pdf_to_txt(path):
     fp.close()
     device.close()
     retstr.close()
+    os.remove(session['file'])
     return text
 
 
